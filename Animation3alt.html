@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Thousand Miles of Mountains and Rivers</title>
+    <style>
+        .container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .painting {
+            width: 400px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: 100% 100%;
+            --rotate: 0deg;
+            --move-x: 0px;
+            --move-y: 0px;
+            animation: rotateThenMove 8s linear infinite;
+        }
+
+        @keyframes rotateThenMove {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            50% {
+                transform: translate(-50%, -50%) rotate(var(--rotate));
+            }
+            100% {
+                transform: 
+                    translate(calc(-50% + var(--move-x)), calc(-50% + var(--move-y))) 
+                    rotate(var(--rotate));
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="thousandmileofrivermountains.jpeg" class="painting" alt="千里江山图">
+    </div>
+
+    <script>
+        const painting = document.querySelector('.painting');
+        let animationId;
+        function setRandomAnimation() {
+            const randomRotate = `${Math.floor(Math.random() * 540 + 180)}deg`;
+            const randomMoveX = `${Math.floor(Math.random() * 600 - 300)}px`;
+            const randomMoveY = `${Math.floor(Math.random() * 400 - 200)}px`;
+            painting.style.setProperty('--rotate', randomRotate);
+            painting.style.setProperty('--move-x', randomMoveX);
+            painting.style.setProperty('--move-y', randomMoveY);
+        }
+        setRandomAnimation();
+        painting.addEventListener('animationiteration', () => {
+            setRandomAnimation();
+        });
+        function stopAnimation() {
+            painting.style.animationPlayState = 'paused';
+        }
+        painting.addEventListener('click', stopAnimation);
+    </script>
+</body>
+</html>

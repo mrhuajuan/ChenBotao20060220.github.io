@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>Thousand Miles of Mountains and Rivers</title>
+    <style>
+        .container {
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+        .painting {
+            width: 400px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform-origin: 100% 100%;
+            animation: rotateThenMove 8s linear forwards;
+        }
+
+        @keyframes rotateThenMove {
+            0% {
+                transform: translate(-50%, -50%) rotate(0deg);
+            }
+            50% {
+                transform: translate(-50%, -50%) rotate(360deg);
+            }
+            100% {
+                transform: translate(calc(-50% + 300px), calc(-50% + 200px)) rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="thousandmileofrivermountains.jpeg" class="painting" alt="Thousand Miles of Mountains and Rivers">
+    </div>
+</body>
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>麻花拟人动画</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #f0f8ff;
+        }
+        /* 容器：承载角色和背景 */
+        .mahua-container {
+            position: relative;
+            width: 400px;
+            height: 400px;
+            background: #a5e95f; /* 匹配原图绿色背景 */
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+        }
+        /* 角色图：核心动画 */
+        .mahua-char {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 320px;
+            animation: 
+                sway 3s ease-in-out infinite alternate,
+                breathe 4s ease-in-out infinite;
+        }
+        /* 背景杯子浮动动画 */
+        .bg-cup {
+            position: absolute;
+            width: 60px;
+            opacity: 0.7;
+            animation: float 6s ease-in-out infinite;
+        }
+        .bg-cup:nth-child(1) { top: 10%; left: 15%; animation-delay: 0s; }
+        .bg-cup:nth-child(2) { top: 30%; left: 25%; animation-delay: 1s; }
+        .bg-cup:nth-child(3) { top: 55%; left: 20%; animation-delay: 2s; }
+        .bg-cup:nth-child(4) { top: 75%; left: 30%; animation-delay: 0.5s; }
+        .bg-cup:nth-child(5) { top: 10%; right: 15%; animation-delay: 1.5s; }
+        .bg-cup:nth-child(6) { top: 30%; right: 25%; animation-delay: 2.5s; }
+        .bg-cup:nth-child(7) { top: 55%; right: 20%; animation-delay: 0.8s; }
+        .bg-cup:nth-child(8) { top: 75%; right: 30%; animation-delay: 1.2s; }
+        .bg-cup:nth-child(9) { top: 5%; left: 45%; animation-delay: 3s; }
+        .bg-cup:nth-child(10) { top: 65%; left: 50%; animation-delay: 2s; }
+
+        /* 星星闪烁动画 */
+        .star {
+            position: absolute;
+            width: 35px;
+            animation: twinkle 2s ease-in-out infinite alternate;
+        }
+        .star:nth-child(1) { top: 70%; left: 22%; }
+        .star:nth-child(2) { top: 15%; right: 22%; }
+        .star:nth-child(3) { top: 45%; right: 28%; }
+
+        /* 水滴下落动画 */
+        .drop {
+            position: absolute;
+            width: 20px;
+            opacity: 0.8;
+            animation: drop-fall 2s linear infinite;
+        }
+        .drop:nth-child(1) { top: 50%; right: 25%; animation-delay: 0s; }
+        .drop:nth-child(2) { top: 58%; right: 22%; animation-delay: 0.5s; }
+
+        /* 动画定义 */
+        @keyframes sway {
+            0% { transform: translate(-50%, -50%) rotate(-8deg); }
+            100% { transform: translate(-50%, -50%) rotate(2deg); }
+        }
+        @keyframes breathe {
+            0%, 100% { transform: translate(-50%, -50%) scale(1); }
+            50% { transform: translate(-50%, -50%) scale(1.1); }
+        }
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-8px); }
+        }
+        @keyframes twinkle {
+            0% { opacity: 0.6; transform: scale(0.9); }
+            100% { opacity: 1; transform: scale(1.8); }
+        }
+        @keyframes drop-fall {
+            0% { transform: translateY(0); opacity: 1; }
+            100% { transform: translateY(90px); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="mahua-container">
+        <!-- 背景杯子 -->
+        <img src="cup.png" class="bg-cup" alt="杯子">
+        <img src="cup.png" class="bg-cup" alt="杯子">
+        <img src="cup.png" class="bg-cup" alt="杯子">
+        <img src="cup.png" class="bg-cup" alt="杯子">
+        <img src="cup.png" class="bg-cup" alt="杯子">
+        <img src="cup.png" class="bg-cup" alt="杯子">
+        <img src="cup.png" class="bg-cup" alt="杯子">
+        <img src="cup.png" class="bg-cup" alt="杯子">
+        <img src="cup.png" class="bg-cup" alt="杯子">
+        <img src="cup.png" class="bg-cup" alt="杯子">
+        
+        <!-- 星星 -->
+        <img src="star.png" class="star" alt="星星">
+        <img src="star.png" class="star" alt="星星">
+        <img src="star.png" class="star" alt="星星">
+        
+        <!-- 水滴 -->
+        <img src="drop.png" class="drop" alt="水滴">
+        <img src="drop.png" class="drop" alt="水滴">
+        
+        <!-- 角色主体 -->
+        <img src="mahua02.png" class="mahua-char" alt="麻花拟人">
+    </div>
+</body>
+</html>

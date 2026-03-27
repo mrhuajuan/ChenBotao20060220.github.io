@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>The Car's Endless Movement</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            position: relative;
+            background: #f0f8ff;
+        }
+        .car {
+            width: 400px;
+            position: absolute;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s linear;
+        }
+    </style>
+</head>
+<body>
+    <img src="car1.jpeg" class="car" alt="汽车">
+
+    <script>
+        const car = document.querySelector('.car');
+        const carWidth = 400;
+        const carHeight = 200;
+
+        let x = window.innerWidth / 2 - carWidth / 2;
+        let y = window.innerHeight / 2 - carHeight / 2;
+
+        const speed = 3;
+        let angle = 30; 
+        let speedX, speedY;
+
+        function degToRad(deg) {
+            return deg * Math.PI / 180;
+        }
+
+        function updateSpeed() {
+            const rad = degToRad(angle);
+            speedX = speed * Math.cos(rad);
+            speedY = speed * Math.sin(rad);
+        }
+
+        updateSpeed();
+
+        function animate() {
+            x += speedX;
+            y += speedY;
+
+            let scale = 1;
+            if (speedX > 0) {
+                scale = -1; 
+            }
+            car.style.transform = `translate(-50%, -50%) scaleX(${scale}) rotate(${angle}deg)`;
+
+            if (x + carWidth > window.innerWidth) {
+                x = window.innerWidth - carWidth;
+                speedX = -speedX;
+                angle = 180 - angle;
+                updateSpeed();
+            }
+            if (x < 0) {
+                x = 0;
+                speedX = -speedX;
+                angle = 180 - angle;
+                updateSpeed();
+            }
+            if (y + carHeight > window.innerHeight) {
+                y = window.innerHeight - carHeight;
+                speedY = -speedY;
+                angle = -angle;
+                updateSpeed();
+            }
+            if (y < 0) {
+                y = 0;
+                speedY = -speedY;
+                angle = -angle;
+                updateSpeed();
+            }
+
+            car.style.left = `${x}px`;
+            car.style.top = `${y}px`;
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+    </script>
+</body>
+</html>

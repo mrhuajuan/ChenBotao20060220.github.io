@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .mahua {
+            width: 400px;
+            animation: sway 3s ease-in-out infinite alternate, breathe 4s ease-in-out infinite;
+        }
+        @keyframes sway {
+            0% { transform: rotate(-2deg); }
+            100% { transform: rotate(2deg); }
+        }
+        @keyframes breathe {
+            0%,100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+    </style>
+</head>
+<body>
+    <img src="mahua01.png" class="mahua" alt="麻花">
+</body>
+</html>
